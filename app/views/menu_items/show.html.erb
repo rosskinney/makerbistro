@@ -1,4 +1,40 @@
 <p id="notice"><%= notice %></p>
 
+<p><%= params.inspect %></p>
+<p><%= @menu_item.ingredients.inspect %></p>
+
+<h1><%= @menu_item.name %></h1>
+
+<h3>Ingredients</h3>
+<% if @current_ingredients.any? %>
+	<ul>
+		<% @current_ingredients.each do |i| %>
+			<li><%= i.name %></li>
+		<% end %>
+	</ul>
+<% else %>
+	<p>(No ingredients listed)</p>
+<% end %>
+
+<p>Add new ingredient</p>
+<%= form_for [@menu_item, @new_ingredient] do |f| %>
+	<% if @new_ingredient.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@new_ingredient.errors.count, "error") %> prohibited this ingredient from being saved:</h2>
+
+      <ul>
+      <% @ingredient.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+	<%= f.text_field :name %>
+	<br>
+	<div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
 <%= link_to 'Edit', edit_menu_item_path(@menu_item) %> |
 <%= link_to 'Back', menu_items_path %>

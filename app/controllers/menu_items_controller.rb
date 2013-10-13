@@ -10,6 +10,9 @@ class MenuItemsController < ApplicationController
   # GET /menu_items/1
   # GET /menu_items/1.json
   def show
+    @current_ingredients = @menu_item.ingredients
+    @new_ingredient = @menu_item.ingredients.new
+    # binding.pry
   end
 
   # GET /menu_items/new
@@ -40,6 +43,7 @@ class MenuItemsController < ApplicationController
   # PATCH/PUT /menu_items/1
   # PATCH/PUT /menu_items/1.json
   def update
+    @ingredient = @menu_item.ingredients.new
     respond_to do |format|
       if @menu_item.update(menu_item_params)
         format.html { redirect_to @menu_item, notice: 'Menu item was successfully updated.' }

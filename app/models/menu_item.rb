@@ -1,4 +1,6 @@
 class MenuItem < ActiveRecord::Base
-	has_one :recipe
-	has_many :ingredients, through: :recipe
+	has_many :recipes
+	has_many :ingredients, through: :recipes
+
+	accepts_nested_attributes_for :ingredients
 end

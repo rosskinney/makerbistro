@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 20131010155915) do
 
   create_table "menu_items", force: true do |t|
     t.string   "name"
-    t.string   "price"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -6,7 +6,7 @@ Makerbistro::Application.routes.draw do
   # root 'welcome#index'
 
   resources :menu_items do
-    resources :ingredients, only: [:create]
+    resources :ingredients
   end
 
   # Example of regular route:
